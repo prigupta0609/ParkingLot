@@ -13,4 +13,5 @@ public interface ParkingLotManager {
     public List<String> getRegistNumWithColor (String color);
     public List<Integer> getSlotNumOfCarWithColor (String color);
     public int getSlotNumWithRegNum (String registrationNum);
+    public void resetParkingLot();
 }

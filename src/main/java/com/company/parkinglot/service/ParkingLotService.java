@@ -12,5 +12,5 @@ public interface ParkingLotService {
     public void getRegistNumWithColor (String color) throws ParkingException;
     public void getSlotNumOfCarWithColor (String color) throws ParkingException;
     public void getSlotNumWithRegNum (String registrationNum) throws ParkingException;
-
+    public void resetParkingLot();
 }

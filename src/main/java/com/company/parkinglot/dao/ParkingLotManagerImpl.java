@@ -110,4 +110,9 @@ public class ParkingLotManagerImpl implements ParkingLotManager {
         }
         return Constants.NOT_AVAILABLE;
     }
+
+    @Override
+    public void resetParkingLot() {
+        parkingSlots = null;
+    }
 }

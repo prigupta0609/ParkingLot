@@ -87,7 +87,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     public void getSlotNumOfCarWithColor(String color) throws ParkingException {
         List<Integer> slotList = parkingLotManager.getSlotNumOfCarWithColor(color);
         if (slotList != null) {
-            StringJoiner joiner = new StringJoiner(",");
+            StringJoiner joiner = new StringJoiner(", ");
             for (Integer slot : slotList) {
                 joiner.add(slot + "");
             }
@@ -104,5 +104,10 @@ public class ParkingLotServiceImpl implements ParkingLotService {
             throw new ParkingException("Not found");
         }
         System.out.println(slotNum);
+    }
+
+    @Override
+    public void resetParkingLot() {
+        parkingLotManager.resetParkingLot();
     }
 }

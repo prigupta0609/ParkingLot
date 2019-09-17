@@ -15,5 +15,6 @@ public class Constants {
     public static final String REG_NUM_FOR_COLOR = "registration_numbers_for_cars_with_colour";
     public static final String SLOT_NUM_FOR_COLOR = "slot_numbers_for_cars_with_colour";
     public static final String SLOT_NUM_FOR_REGIS_NUM = "slot_number_for_registration_number";
+    public static final String RESET_PARKING_LOT = "reset_parking_lot";
 
 }

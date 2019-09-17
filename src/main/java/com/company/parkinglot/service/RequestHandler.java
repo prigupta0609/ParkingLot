@@ -55,6 +55,9 @@ public class RequestHandler {
             case Constants.STATUS :
                 parkingLotService.getStatus();
                 break;
+            case Constants.RESET_PARKING_LOT :
+                parkingLotService.resetParkingLot();
+                break;
             default: throw new InvalidRequestException("Invalid request operation : " + requestParam[0]);
         }
     }
