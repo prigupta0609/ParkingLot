@@ -1,4 +1,4 @@
-package com.company.parkinglot.validate;
+package com.company.parkinglot.validation;
 
 import com.company.parkinglot.constant.Constants;
 

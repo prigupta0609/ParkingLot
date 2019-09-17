@@ -1,7 +1,7 @@
 package com.company.parkinglot;
 
 import com.company.parkinglot.service.RequestHandler;
-import com.company.parkinglot.validate.RequestValidator;
+import com.company.parkinglot.validation.RequestValidator;
 
 import java.io.*;
 
