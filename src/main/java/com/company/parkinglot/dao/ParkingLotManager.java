@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ParkingLotManager {
 
+    public int createParkingLot (int numOfSlots);
     public int park (Vehicle vehicle);
     public int leaveCar (int slotNum);
     public List<String> getStatus();

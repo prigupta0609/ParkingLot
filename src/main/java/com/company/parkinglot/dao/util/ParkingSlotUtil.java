@@ -9,7 +9,7 @@ import java.util.List;
 public class ParkingSlotUtil {
 
     public static ParkingSlot getNearestAvailableParkingSlot(List<ParkingSlot> parkingSlots) {
-        return parkingSlots.stream().filter(x -> x.getParkingSlotStatus().equals(ParkingSlotStatus.AVAILABLE)).findFirst().get();
+        return parkingSlots.stream().filter(x -> x.getParkingSlotStatus().equals(ParkingSlotStatus.AVAILABLE)).findFirst().orElse(null);
     }
 
     public static void bookSlot(ParkingSlot slot, Vehicle vehicle) {
@@ -18,7 +18,7 @@ public class ParkingSlotUtil {
     }
 
     public static boolean isVehicleAlreadyParked (List<ParkingSlot> parkingSlots, String registrationNum) {
-        return parkingSlots.stream().filter(x -> (x.getVehicle() != null && x.getVehicle().getRegistrationNum().equalsIgnoreCase(registrationNum))).findAny().get() != null;
+        return parkingSlots.stream().filter(x -> (x.getVehicle() != null && x.getVehicle().getRegistrationNum().equalsIgnoreCase(registrationNum))).findAny().orElse(null) != null;
     }
 
     public static void setSlotAvailable (List<ParkingSlot> parkingSlots, int slotNumber) {
