@@ -32,6 +32,13 @@ public class RequestHandlerTest {
         Assert.assertEquals("Created a parking lot with 10 slots", outContent.toString().trim());
     }
 
+    @Test()
+    public void testParkingAlreadyExist() throws Exception {
+        requestHandler.handle(Constants.CREATE_PARKING_LOT + " 1");
+        requestHandler.handle(Constants.CREATE_PARKING_LOT + " 2");
+        Assert.assertEquals("Created a parking lot with 1 slots\nParking lot already exists", outContent.toString().trim());
+    }
+
     @Test
     public void testPark() throws Exception {
         requestHandler.handle(Constants.CREATE_PARKING_LOT + " 2");
@@ -77,8 +84,8 @@ public class RequestHandlerTest {
         requestHandler.handle(Constants.PARK + " RJ-11-AA-1000 RED");
         requestHandler.handle(Constants.PARK + " RJ-22-BB-4343 YELLOW");
         requestHandler.handle(Constants.STATUS);
-        Assert.assertEquals("Created a parking lot with 4 slots\nAllocated slot number: 1\nAllocated slot number: 2\n1\t\tRJ-11-AA-1000\t\tRED\n" +
-                "2\t\tRJ-22-BB-4343\t\tYELLOW", outContent.toString().trim());
+        Assert.assertEquals("Created a parking lot with 4 slots\nAllocated slot number: 1\nAllocated slot number: 2\nSlot No.    Registration No    Colour\n1           RJ-11-AA-1000      RED\n" +
+                "2           RJ-22-BB-4343      YELLOW", outContent.toString().trim());
     }
 
     @Test

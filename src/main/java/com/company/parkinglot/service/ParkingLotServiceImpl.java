@@ -2,6 +2,7 @@ package com.company.parkinglot.service;
 
 import com.company.parkinglot.constant.Constants;
 import com.company.parkinglot.contract.Car;
+import com.company.parkinglot.contract.ParkingSlot;
 import com.company.parkinglot.dao.ParkingLotManager;
 import com.company.parkinglot.dao.ParkingLotManagerImpl;
 import com.company.parkinglot.exception.InvalidRequestException;
@@ -29,11 +30,11 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     @Override
     public void createParkingLot(int numOfSlots) throws InvalidRequestException {
         if (numOfSlots > 0) {
-            int result = parkingLotManager.createParkingLot(numOfSlots);
-            if (result == Constants.SUCCESS) {
+            String result = parkingLotManager.createParkingLot(numOfSlots);
+            if (result == Constants.OPERATION_SUCCESS) {
                 System.out.println("Created a parking lot with " + numOfSlots + " slots");
-            } else {
-                System.out.println("Failed to create parking lot with " + numOfSlots + " slots");
+            } else if (result == Constants.PARKING_LOT_ALREADY_EXIST) {
+                System.out.println("Parking lot already exists");
             }
         } else {
             throw new InvalidRequestException("Initiate parking lot with valid number of slots");
@@ -42,13 +43,9 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     @Override
     public void park(String registrationNum, String color) throws ParkingException {
-        int slotNumber = parkingLotManager.park(new Car(registrationNum, color));
-        if (slotNumber == Constants.NOT_AVAILABLE) {
-            throw new ParkingException("Sorry, parking lot is full");
-        } else if (slotNumber == Constants.VEHICLE_ALREADY_PARKED) {
-            throw new ParkingException("Can't park already parked vehicle");
-        } else {
-            System.out.println("Allocated slot number: " + slotNumber);
+        ParkingSlot slot = parkingLotManager.park(new Car(registrationNum, color));
+        if (slot != null) {
+            System.out.println("Allocated slot number: " + slot.getSlotNumber());
         }
     }
 
@@ -65,6 +62,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     public void getStatus() throws ParkingException {
         List<String> statusList = parkingLotManager.getStatus();
         if (statusList != null) {
+            System.out.println("Slot No.    Registration No    Colour");
             for (String status: statusList) {
                 System.out.println(status);
             }
