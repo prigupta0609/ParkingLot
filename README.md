@@ -61,9 +61,9 @@ Maven 3.x
 **Run**
 `bin/parking_lot`
     OR
-`java -jar target/parkinglot-1.0-SNAPSHOT bin/parking_lot_file_input.txt` - for file input
+`java -jar target/parkinglot-1.0-SNAPSHOT.jar bin/parking_lot_file_input.txt` - for file input
     OR
-`java -jar target/parkinglot-1.0-SNAPSHOT` - for console command
+`java -jar target/parkinglot-1.0-SNAPSHOT.jar` - for console command
 
 **Test**
 `bin/run_functional_tests`
